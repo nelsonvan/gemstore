@@ -12,11 +12,13 @@
 </head>
 <body ng-controller="StoreController as store">
 	<ul>
-		<li class="list-group-item col-lg-2" ng-repeat="product in store.products">
+		<li class="list-group-item col-lg-4" ng-repeat="product in store.products | orderBy:'-price'">
 			<h1>{{product.name}}</h1>
 			<h2>It's price is {{product.price|currency}}.</h2>
 			<p>{{product.description}}</p>
-			<button ng-show="product.canPurchase" >Purchase</button>
+			<img ng-src={{product.images[0]}}>
+			<br><br>
+			<button ng-show="product.canPurchase" class="btn btn-default btn-md" >Purchase</button>
 		</li>
 	</ul>
 	
@@ -24,19 +26,3 @@
 	
 	
 </body>
-
-
-<!--
-</html>
-<!DOCTYPE html>
-<html lang="en-US">
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<body>
-
-<div ng-app="">
- 	<p>Name : <input type="text" ng-model="name"></p>
- 	<h1>Hello {{name}}</h1>
-</div>
-
-</body>
-</html>
